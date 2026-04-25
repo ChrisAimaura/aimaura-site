@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "trailingSlash": "auto",
+  "mimeTypes": {
+    ".webmanifest": "application/manifest+json",
+    ".mp4": "video/mp4"
+  },
+  "globalHeaders": {
+    "cache-control": "public, max-age=600, must-revalidate",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "SAMEORIGIN",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+  },
+  "routes": [
+    {
+      "route": "/assets/img/*",
+      "headers": { "cache-control": "public, max-age=2592000, immutable" }
+    },
+    {
+      "route": "/assets/video/*",
+      "headers": { "cache-control": "public, max-age=2592000, immutable" }
+    },
+    {
+      "route": "/styles.css",
+      "headers": { "cache-control": "public, max-age=86400, must-revalidate" }
+    },
+    {
+      "route": "/script.js",
+      "headers": { "cache-control": "public, max-age=86400, must-revalidate" }
+    }
+  ],
+  "responseOverrides": {
+    "404": { "rewrite": "/index.html", "statusCode": 200 }
+  }
+}
