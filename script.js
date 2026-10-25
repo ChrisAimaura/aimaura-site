@@ -114,24 +114,49 @@ var STREAM = {
     reveals.forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  // ---- Pause hero video when off-screen (saves CPU/battery) ----------------
+  // ---- Hero video: smooth fade-in, still image only as a fallback ----------
+  // STILL_DELAY = how long (ms) to wait for the video before showing the still image.
+  var STILL_DELAY = 2500;
   var heroVideo = document.querySelector('.hero__video');
-  if (heroVideo) {
+  var heroBg = document.querySelector('.hero__bg');
+  if (heroVideo && heroBg) {
+    heroVideo.classList.add('is-managed');
+    var stillTimer = null;
+    var showStill = function () { heroBg.classList.add('show-still'); };
+    var onPlaying = function () {
+      heroVideo.classList.add('is-ready');
+      if (stillTimer) clearTimeout(stillTimer);
+    };
+
     if (reduce) {
       heroVideo.pause();
       heroVideo.removeAttribute('autoplay');
-    } else if ('IntersectionObserver' in window) {
-      var vo = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            var pr = heroVideo.play();
-            if (pr && pr.catch) pr.catch(function () {});
-          } else {
-            heroVideo.pause();
-          }
-        });
-      }, { threshold: 0.05 });
-      vo.observe(heroVideo);
+      showStill();
+    } else {
+      heroVideo.addEventListener('playing', onPlaying);
+      if (!heroVideo.paused && heroVideo.readyState >= 3) onPlaying();
+      stillTimer = setTimeout(function () {
+        if (!heroVideo.classList.contains('is-ready')) showStill();
+      }, STILL_DELAY);
+      // If the video file fails to load, show the still straight away
+      var src = heroVideo.querySelector('source');
+      if (src) src.addEventListener('error', showStill);
+      heroVideo.addEventListener('error', showStill);
+
+      // Pause when off-screen (saves CPU/battery), resume when back in view
+      if ('IntersectionObserver' in window) {
+        var vo = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var pr = heroVideo.play();
+              if (pr && pr.catch) pr.catch(function () { showStill(); });
+            } else {
+              heroVideo.pause();
+            }
+          });
+        }, { threshold: 0.05 });
+        vo.observe(heroVideo);
+      }
     }
   }
 
