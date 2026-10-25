@@ -26,10 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" />
 
-  <!-- Video poster: fetch first so the top of the page paints fast -->
-  <link rel="preload" as="image" href="assets/img/v2/hero-setup-1024.jpg" fetchpriority="high" />
-
-  <link rel="stylesheet" href="styles.css?v=20261025" />
+  <link rel="stylesheet" href="styles.css?v=20261025-2" />
 
   <script type="application/ld+json">
   {
@@ -78,7 +75,10 @@
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero__bg" aria-hidden="true">
-      <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/img/v2/hero-setup-1024.jpg">
+      <!-- Still image: only fades in if the video is slow to start or can't play -->
+      <div class="hero__still"></div>
+      <!-- Teaser video: fades in smoothly once it is actually playing -->
+      <video class="hero__video" autoplay muted loop playsinline preload="auto">
         <source src="assets/video/aimaura-teaser.mp4" type="video/mp4" />
       </video>
       <div class="hero__scrim"></div>
@@ -390,6 +390,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=20261025" defer></script>
+<script src="script.js?v=20261025-2" defer></script>
 </body>
 </html>
