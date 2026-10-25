@@ -3,35 +3,61 @@
   "trailingSlash": "auto",
   "mimeTypes": {
     ".webmanifest": "application/manifest+json",
-    ".mp4": "video/mp4"
+    ".mp4": "video/mp4",
+    ".webp": "image/webp"
   },
   "globalHeaders": {
     "cache-control": "public, max-age=600, must-revalidate",
+    "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-src https://player.twitch.tv https://www.facebook.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests",
     "x-content-type-options": "nosniff",
     "x-frame-options": "SAMEORIGIN",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "permissions-policy": "geolocation=(), microphone=(), camera=(), payment=(), usb=()",
+    "cross-origin-opener-policy": "same-origin",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
   },
   "routes": [
     {
       "route": "/assets/img/*",
-      "headers": { "cache-control": "public, max-age=2592000, immutable" }
+      "headers": {
+        "cache-control": "public, max-age=2592000, immutable"
+      }
     },
     {
       "route": "/assets/video/*",
-      "headers": { "cache-control": "public, max-age=2592000, immutable" }
+      "headers": {
+        "cache-control": "public, max-age=2592000, immutable"
+      }
     },
     {
       "route": "/styles.css",
-      "headers": { "cache-control": "public, max-age=86400, must-revalidate" }
+      "headers": {
+        "cache-control": "public, max-age=86400, must-revalidate"
+      }
     },
     {
       "route": "/script.js",
-      "headers": { "cache-control": "public, max-age=86400, must-revalidate" }
+      "headers": {
+        "cache-control": "public, max-age=86400, must-revalidate"
+      }
+    },
+    {
+      "route": "/index.html",
+      "headers": {
+        "cache-control": "no-cache"
+      }
+    },
+    {
+      "route": "/",
+      "headers": {
+        "cache-control": "no-cache"
+      }
     }
   ],
   "responseOverrides": {
-    "404": { "rewrite": "/index.html", "statusCode": 200 }
+    "404": {
+      "rewrite": "/404.html",
+      "statusCode": 404
+    }
   }
 }
