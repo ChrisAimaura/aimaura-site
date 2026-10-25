@@ -1,39 +1,73 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Welcome to Aimaura - built by gamers, for gamers</title>
-  <meta name="description" content="Dual Strike is a dual ergonomic gaming mouse-controller that blends mouse-like precision with controller comfort." />
-  <meta name="theme-color" content="#0b0613" />
-  <meta property="og:title" content="Dual Strike — The Dual Ergonomic Gaming Mouse-Controller" />
-  <meta property="og:description" content="Mouse-like precision. Controller comfort. One unified input system." />
+  <title>Aimaura Dual Strike: the dual ergonomic gaming mouse-controller</title>
+  <meta name="description" content="Dual Strike by Aimaura is a two-piece ergonomic gaming mouse-controller that blends mouse-like precision with controller comfort. The prototype is almost complete. Watch the live reveal soon on Twitch and Facebook." />
+  <meta name="theme-color" content="#07040d" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- Social sharing -->
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/img/hero-setup.jpg" />
+  <meta property="og:site_name" content="Aimaura" />
+  <meta property="og:title" content="Dual Strike: the dual ergonomic gaming mouse-controller" />
+  <meta property="og:description" content="Mouse-like precision. Controller comfort. One unified input. Live reveal coming soon on Twitch and Facebook." />
+  <meta property="og:image" content="https://www.aimaura.co.uk/assets/img/v2/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The two Dual Strike controller shells on a dark desk, lit in violet." />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <link rel="icon" type="image/png" href="assets/img/favicon.png" />
-  <link rel="preload" as="image" href="assets/img/hero-setup.jpg" />
-  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Fonts: connect early, load without blocking text -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" />
+
+  <!-- Video poster: fetch first so the top of the page paints fast -->
+  <link rel="preload" as="image" href="assets/img/v2/hero-setup-1024.jpg" fetchpriority="high" />
+
+  <link rel="stylesheet" href="styles.css?v=20261025" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Aimaura",
+    "url": "https://www.aimaura.co.uk/",
+    "logo": "https://www.aimaura.co.uk/assets/img/AimauraPNG.png",
+    "email": "enquiries@aimaura.com",
+    "description": "Makers of Dual Strike, the dual ergonomic gaming mouse-controller."
+  }
+  </script>
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
+<!-- Live banner: hidden until STREAM.live is set to true in script.js -->
+<div class="live-banner" id="live-banner" hidden>
+  <span class="live-pill"><span class="live-dot" aria-hidden="true"></span>LIVE</span>
+  <span>We're streaming the Dual Strike prototype right now.</span>
+  <a href="#live" class="live-banner__link">Watch now →</a>
+</div>
+
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a class="brand" href="#top" aria-label="AIMAURA home" style="display:inline-flex;align-items:center;gap:0.75rem;transform:scale(1.4);transform-origin:left center;">
-      <img src="assets/img/AimauraPNG.png" alt="" class="brand__mark" style="height:3rem;width:auto;" />
+    <a class="brand" href="#top" aria-label="Aimaura home">
+      <img src="assets/img/AimauraPNG.png" alt="" class="brand__mark" />
     </a>
-    <nav class="nav__links" aria-label="Primary">
+    <nav class="nav__links" id="nav-links" aria-label="Primary">
       <a href="#product">Product</a>
+      <a href="#live" class="nav__live"><span class="live-dot" aria-hidden="true"></span>Live reveal</a>
       <a href="#features">Features</a>
       <a href="#design">Design</a>
       <a href="#tech">Technology</a>
       <a href="#contact" class="nav__cta">Get in touch</a>
     </nav>
-    <button class="nav__burger" aria-label="Open menu" aria-expanded="false" id="burger">
+    <button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links" id="burger">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -44,7 +78,7 @@
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero__bg" aria-hidden="true">
-      <video class="hero__video" autoplay muted loop playsinline poster="assets/img/hero-setup.jpg">
+      <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/img/v2/hero-setup-1024.jpg">
         <source src="assets/video/aimaura-teaser.mp4" type="video/mp4" />
       </video>
       <div class="hero__scrim"></div>
@@ -53,7 +87,7 @@
 
     <div class="hero__content">
       <div class="eyebrow">
-        <span class="dot"></span> Prototype in development · Crowdfunding soon
+        <span class="dot"></span> Prototype almost complete · Live reveal soon
       </div>
       <h1 class="hero__title">
         <span class="line">Mouse-like precision.</span>
@@ -61,12 +95,12 @@
         <span class="line">One unified input.</span>
       </h1>
       <p class="hero__sub">
-        Dual Strike is a split-shell gaming controller-mouse that ends the trade-off between competitive precision
-        and the comfort of a familiar grip — a single device built for both hands.
+        Dual Strike is a two-piece gaming controller-mouse that ends the trade-off between competitive precision
+        and the comfort of a familiar grip. One sculpted shell for each hand.
       </p>
       <div class="hero__cta">
         <a class="btn btn--primary" href="#contact">Register interest</a>
-        <a class="btn btn--ghost" href="#features">Explore the device</a>
+        <a class="btn btn--ghost" href="#live"><span class="live-dot" aria-hidden="true"></span>Watch the live reveal</a>
       </div>
     </div>
 
@@ -84,20 +118,63 @@
         <p>
           For years, players have been forced to choose: the precision and rapid aiming of a mouse,
           or the comfort and familiarity of a controller. Dual Strike ends that compromise. Two
-          ergonomically-shaped shells — one for each hand — combine high-resolution mouse tracking
-          with analogue thumb-stick navigation, programmable buttons, modular triggers and a
+          ergonomically shaped shells, one for each hand, combine high-resolution mouse tracking
+          with analogue thumbstick navigation, programmable buttons, analogue triggers and a
           familiar ABXY layout.
         </p>
         <ul class="ticks">
           <li>High-resolution optical mouse sensor on the right shell</li>
-          <li>Analogue joystick &amp; D-Pad on the left shell</li>
+          <li>Analogue joystick &amp; D-pad on the left shell</li>
           <li>Programmable side buttons, bumpers and triggers on both</li>
           <li>Wireless RF / BLE with USB-C charging on each unit</li>
         </ul>
       </div>
       <figure class="product__image reveal">
-        <img src="assets/img/triptych.jpg" alt="Three angles of the Dual Strike controller — system ready, top-down buttons, and trigger detail." loading="lazy" />
+        <picture>
+          <source type="image/webp" srcset="assets/img/v2/triptych-c-640.webp 640w, assets/img/v2/triptych-c-1024.webp 1024w, assets/img/v2/triptych-c-full.webp 1680w" sizes="(max-width: 880px) 92vw, 560px" />
+          <img src="assets/img/v2/triptych-c-1024.jpg" srcset="assets/img/v2/triptych-c-640.jpg 640w, assets/img/v2/triptych-c-1024.jpg 1024w, assets/img/v2/triptych-c-full.jpg 1680w" sizes="(max-width: 880px) 92vw, 560px" width="1680" height="940" alt="Three views of the Dual Strike controller in graphite: the left shell from the front, the right shell's ABXY buttons from above, and a close-up of the rear bumper and trigger." loading="lazy" decoding="async" />
+        </picture>
       </figure>
+    </div>
+  </section>
+
+  <!-- LIVE REVEAL / STREAMING -->
+  <section class="section live" id="live" aria-labelledby="live-title">
+    <div class="container live__grid">
+      <figure class="live__media reveal">
+        <picture>
+          <source type="image/webp" srcset="assets/img/v2/stream-setup-640.webp 640w, assets/img/v2/stream-setup-1024.webp 1024w, assets/img/v2/stream-setup-full.webp 1680w" sizes="(max-width: 980px) 92vw, 640px" />
+          <img class="live__img" src="assets/img/v2/stream-setup-1024.jpg" srcset="assets/img/v2/stream-setup-640.jpg 640w, assets/img/v2/stream-setup-1024.jpg 1024w, assets/img/v2/stream-setup-full.jpg 1680w" sizes="(max-width: 980px) 92vw, 640px" width="1680" height="944" alt="The Dual Strike controller on a streaming desk, with a gaming monitor, broadcast microphone and webcam lit in violet." loading="lazy" decoding="async" />
+        </picture>
+        <span class="live__tag" id="live-tag"><span class="live-dot" aria-hidden="true"></span><span id="live-tag-text">Coming soon</span></span>
+      </figure>
+      <div class="live__copy reveal">
+        <div class="kicker">Live reveal</div>
+        <h2 id="live-title">Watch Dual Strike come to life.</h2>
+        <p>
+          The prototype is almost complete, and we're going to show it to you live. Join us for the first
+          hands-on stream: we'll put Dual Strike through real games, take your questions and share what's
+          next on the road to crowdfunding.
+        </p>
+
+        <dl class="live__facts">
+          <div>
+            <dt>Streaming on</dt>
+            <dd><span class="chip">Twitch</span> <span class="chip">Facebook</span></dd>
+          </div>
+          <div>
+            <dt>When</dt>
+            <dd id="live-date">Date to be announced</dd>
+          </div>
+        </dl>
+
+        <div class="live__cta">
+          <a class="btn btn--primary" id="notify-btn" href="mailto:enquiries@aimaura.com?subject=Notify%20me%20when%20Dual%20Strike%20goes%20live&amp;body=Hi%20Aimaura%2C%0A%0APlease%20let%20me%20know%20when%20the%20Dual%20Strike%20live%20reveal%20is%20scheduled.%0A">Notify me when we go live</a>
+          <!-- Channel buttons appear automatically once the links are added to STREAM in script.js -->
+          <a class="btn btn--ghost" id="link-twitch" href="#" target="_blank" rel="noopener" hidden>Follow on Twitch</a>
+          <a class="btn btn--ghost" id="link-facebook" href="#" target="_blank" rel="noopener" hidden>Follow on Facebook</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -107,7 +184,7 @@
       <header class="section__head reveal">
         <div class="kicker">What's inside</div>
         <h2>Every input, exactly where your fingers expect it.</h2>
-        <p class="lede">Each shell is built around a one-handed grip — every button, stick and trigger sits within natural reach, so the device disappears into the way you already play.</p>
+        <p class="lede">Each shell is built around a one-handed grip. Every button, stick and trigger sits within natural reach, so the device disappears into the way you already play.</p>
       </header>
 
       <div class="feature-grid">
@@ -115,13 +192,13 @@
         <article class="feature reveal">
           <div class="feature__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="4" fill="currentColor"/></svg></div>
           <h3>Analogue Joystick</h3>
-          <p>Smooth, multi-directional movement under your left thumb — driving on-screen movement and look with the precision you'd expect from a flagship controller.</p>
+          <p>Smooth, multi-directional movement under your left thumb, driving on-screen movement and look with the precision you'd expect from a flagship controller.</p>
         </article>
 
         <article class="feature reveal">
           <div class="feature__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M18 8h12v10h10v12H30v10H18V30H8V18h10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
           <h3>Directional Pad</h3>
-          <p>A familiar four-way D-Pad on the left shell handles menus, weapon swaps and quick-fire navigation — right where your thumb already lives.</p>
+          <p>A familiar four-way D-pad on the left shell handles menus, weapon swaps and quick-fire navigation, right where your thumb already lives.</p>
         </article>
 
         <article class="feature reveal">
@@ -139,31 +216,31 @@
         <article class="feature reveal">
           <div class="feature__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="14" width="28" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="24" r="2" fill="currentColor"/><circle cx="24" cy="24" r="2" fill="currentColor"/><circle cx="30" cy="24" r="2" fill="currentColor"/></svg></div>
           <h3>Programmable Side Buttons</h3>
-          <p>Three programmable buttons on the inside of each shell — bind them to anything from melee to push-to-talk for a layout that's truly yours.</p>
+          <p>Three programmable buttons on the inside of each shell. Bind them to anything from melee to push-to-talk for a layout that's truly yours.</p>
         </article>
 
         <article class="feature reveal">
           <div class="feature__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 18c10-6 22-6 32 0v6H8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 28v6M24 28v6M34 28v6" stroke="currentColor" stroke-width="2"/></svg></div>
           <h3>Bumper &amp; Trigger</h3>
-          <p>A bumper and an analogue trigger sit along the upper edge of each shell — variable input under your index or middle finger for nuanced shooting and acceleration.</p>
+          <p>A bumper and an analogue trigger sit along the upper edge of each shell, giving variable input under your index or middle finger for nuanced shooting and acceleration.</p>
         </article>
 
         <article class="feature reveal">
           <div class="feature__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="14" y="20" width="20" height="8" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20v-4M28 20v-4" stroke="currentColor" stroke-width="2"/></svg></div>
           <h3>USB-C Charging</h3>
-          <p>USB-C on each shell powers the internal battery and supports wired play — wireless when you want it, plugged in when you need it.</p>
+          <p>USB-C on each shell powers the internal battery and supports wired play: wireless when you want it, plugged in when you need it.</p>
         </article>
 
         <article class="feature reveal">
           <div class="feature__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 24c0-6 5.4-12 12-12s12 6 12 12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 24c0-4 3.6-8 8-8s8 4 8 8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="2.5" fill="currentColor"/></svg></div>
           <h3>Wireless RF / BLE</h3>
-          <p>Each shell transmits independently, with a paired receiver combining both signals into one input device — no proprietary drivers, no perceptible latency.</p>
+          <p>Each shell transmits independently, with a paired receiver combining both signals into one input device. No proprietary drivers, no perceptible latency.</p>
         </article>
 
         <article class="feature reveal">
           <div class="feature__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c8 5 12 11 12 18 0 7-5.4 14-12 18-6.6-4-12-11-12-18 0-7 4-13 12-18z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 22l4 4 8-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3>One-Handed Ergonomics</h3>
-          <p>Every input sits within reach of a single, natural grip — no awkward stretches, no compromised reach. Pick up a shell and start playing.</p>
+          <p>Every input sits within reach of a single, natural grip. No awkward stretches, no compromised reach. Pick up a shell and start playing.</p>
         </article>
 
       </div>
@@ -176,29 +253,47 @@
       <header class="section__head reveal">
         <div class="kicker">Industrial design</div>
         <h2>Sculpted for both hands.</h2>
-        <p class="lede">A weighted base, a sculpted thumb crown, and a recessed trigger well. Each shell stands ready on the desk and tracks the moment you pick it up.</p>
+        <p class="lede">A weighted base, a sculpted thumb crown, a textured grip and a recessed trigger well. Each shell stands ready on the desk and tracks the moment you pick it up.</p>
       </header>
 
       <div class="gallery">
         <figure class="gallery__item gallery__item--wide reveal">
-          <img src="assets/img/front-pair.jpg" alt="Front view of the left and right Dual Strike shells, showing the crosshair mark on the body." loading="lazy" />
-        </figure>
-        <figure class="gallery__item reveal">
-          <img src="assets/img/side-pair.jpg" alt="Side profile of both Dual Strike shells, showing the joystick and ABXY cluster on top." loading="lazy" />
-        </figure>
-        <figure class="gallery__item reveal">
-          <img src="assets/img/trigger-detail.jpg" alt="Close detail of the integrated bumper and trigger on the upper edge of a Dual Strike shell." loading="lazy" />
-        </figure>
-        <figure class="gallery__item reveal">
-          <img src="assets/img/underside.jpg" alt="The underside of the right Dual Strike shell, exposing the optical mouse tracking sensor." loading="lazy" />
-        </figure>
-        <figure class="gallery__item reveal">
-          <img src="assets/img/top-down.jpg" alt="Top-down view of both Dual Strike shells, showing inputs from above." loading="lazy" />
+        <picture>
+          <source type="image/webp" srcset="assets/img/v2/front-view-640.webp 640w, assets/img/v2/front-view-1024.webp 1024w, assets/img/v2/front-view-full.webp 1680w" sizes="(max-width: 880px) 46vw, 590px" />
+          <img src="assets/img/v2/front-view-1024.jpg" srcset="assets/img/v2/front-view-640.jpg 640w, assets/img/v2/front-view-1024.jpg 1024w, assets/img/v2/front-view-full.jpg 1680w" sizes="(max-width: 880px) 46vw, 590px" width="1680" height="944" alt="Front view of the left and right Dual Strike shells standing side by side in graphite." loading="lazy" decoding="async" />
+        </picture>
+          <figcaption>Front view</figcaption>
         </figure>
         <figure class="gallery__item gallery__item--wide reveal">
-          <img src="assets/img/colourways.jpg" alt="Three colourways of the Dual Strike controller — slate, black, and forest." loading="lazy" />
+        <picture>
+          <source type="image/webp" srcset="assets/img/v2/top-down-b-640.webp 640w, assets/img/v2/top-down-b-1024.webp 1024w, assets/img/v2/top-down-b-full.webp 1456w" sizes="(max-width: 880px) 46vw, 590px" />
+          <img src="assets/img/v2/top-down-b-1024.jpg" srcset="assets/img/v2/top-down-b-640.jpg 640w, assets/img/v2/top-down-b-1024.jpg 1024w, assets/img/v2/top-down-b-full.jpg 1456w" sizes="(max-width: 880px) 46vw, 590px" width="1456" height="1088" alt="Top-down view of both Dual Strike shells, showing the thumbstick, D-pad and ABXY buttons." loading="lazy" decoding="async" />
+        </picture>
+          <figcaption>From above</figcaption>
+        </figure>
+        <figure class="gallery__item reveal">
+        <picture>
+          <source type="image/webp" srcset="assets/img/v2/trigger-detail-640.webp 640w, assets/img/v2/trigger-detail-1024.webp 1024w, assets/img/v2/trigger-detail-full.webp 1456w" sizes="(max-width: 880px) 46vw, 390px" />
+          <img src="assets/img/v2/trigger-detail-1024.jpg" srcset="assets/img/v2/trigger-detail-640.jpg 640w, assets/img/v2/trigger-detail-1024.jpg 1024w, assets/img/v2/trigger-detail-full.jpg 1456w" sizes="(max-width: 880px) 46vw, 390px" width="1456" height="1088" alt="Close-up of the bumper and analogue trigger on the upper rear edge of a Dual Strike shell." loading="lazy" decoding="async" />
+        </picture>
+          <figcaption>Bumper &amp; trigger</figcaption>
+        </figure>
+        <figure class="gallery__item reveal">
+        <picture>
+          <source type="image/webp" srcset="assets/img/v2/colour-graphite-640.webp 640w, assets/img/v2/colour-graphite-1024.webp 1024w, assets/img/v2/colour-graphite-full.webp 1220w" sizes="(max-width: 880px) 46vw, 390px" />
+          <img src="assets/img/v2/colour-graphite-1024.jpg" srcset="assets/img/v2/colour-graphite-640.jpg 640w, assets/img/v2/colour-graphite-1024.jpg 1024w, assets/img/v2/colour-graphite-full.jpg 1220w" sizes="(max-width: 880px) 46vw, 390px" width="1220" height="800" alt="The Dual Strike controller in the Graphite colourway concept: matte charcoal with coloured ABXY buttons." loading="lazy" decoding="async" />
+        </picture>
+          <figcaption>Graphite</figcaption>
+        </figure>
+        <figure class="gallery__item gallery__item--mfull reveal">
+        <picture>
+          <source type="image/webp" srcset="assets/img/v2/colour-arctic-640.webp 640w, assets/img/v2/colour-arctic-1024.webp 1024w, assets/img/v2/colour-arctic-full.webp 1220w" sizes="(max-width: 880px) 46vw, 390px" />
+          <img src="assets/img/v2/colour-arctic-1024.jpg" srcset="assets/img/v2/colour-arctic-640.jpg 640w, assets/img/v2/colour-arctic-1024.jpg 1024w, assets/img/v2/colour-arctic-full.jpg 1220w" sizes="(max-width: 880px) 46vw, 390px" width="1220" height="800" alt="The Dual Strike controller in the Arctic colourway concept: gloss white crowns with bronze buttons over a charcoal grip." loading="lazy" decoding="async" />
+        </picture>
+          <figcaption>Arctic</figcaption>
         </figure>
       </div>
+      <p class="gallery__note">Concept renders of the latest design. Final production details may vary.</p>
     </div>
   </section>
 
@@ -208,18 +303,18 @@
       <div class="tech__copy reveal">
         <div class="kicker">System architecture</div>
         <h2>Two shells, one device.</h2>
-        <p>Each shell carries its own micro-controller, battery, and wireless transmitter. Their signals are combined by a paired receiver and presented to the host PC or console as a single input device — so it behaves as one to your operating system, while feeling like two natural extensions of your hands.</p>
+        <p>Each shell carries its own microcontroller, battery and wireless transmitter. Their signals are combined by a paired receiver and presented to the host PC or console as a single input device. It behaves as one device to your operating system, while feeling like two natural extensions of your hands.</p>
         <ul class="ticks">
-          <li>Independent micro-controllers per shell with on-board profile storage</li>
+          <li>Independent microcontrollers per shell with on-board profile storage</li>
           <li>Dual RF / BLE receiver with built-in aggregation</li>
-          <li>Standard USB HID output — no drivers, no custom software</li>
+          <li>Standard USB HID output: no drivers, no custom software</li>
         </ul>
       </div>
 
-      <div class="diagram reveal" aria-label="Architecture diagram">
+      <div class="diagram reveal" role="img" aria-label="Architecture diagram: the left and right shells each transmit over RF or BLE to a receiver, which aggregates them into one USB HID output for the host PC or console.">
         <div class="diagram__box diagram__host">Host Device · PC / Console</div>
         <div class="diagram__line"></div>
-        <div class="diagram__box diagram__hid">USB HID Output<br/><span class="muted">Aggregation Logic · Dual RF / BLE Receiver</span></div>
+        <div class="diagram__box diagram__hid">USB HID Output<span class="muted">Aggregation Logic · Dual RF / BLE Receiver</span></div>
         <div class="diagram__split">
           <div class="diagram__branch">
             <div class="diagram__line diagram__line--diag"></div>
@@ -227,7 +322,7 @@
               <strong>Left Shell</strong>
               <span>MCU · Battery · RF/BLE TX</span>
               <ul>
-                <li>Joystick</li><li>D-Pad</li><li>Bumper &amp; Trigger</li><li>3 Side Buttons</li><li>USB-C</li>
+                <li>Joystick</li><li>D-pad</li><li>Bumper &amp; Trigger</li><li>3 Side Buttons</li><li>USB-C</li>
               </ul>
             </div>
           </div>
@@ -249,11 +344,17 @@
   <!-- VISION -->
   <section class="section vision">
     <div class="container vision__inner">
-      <img src="assets/img/dual-strike.png" alt="Dual Strike key art — two shells on a desk in front of a monitor." class="vision__art reveal" loading="lazy" />
+      <div class="reveal">
+        <picture>
+          <source type="image/webp" srcset="assets/img/v2/dual-strike-640.webp 640w, assets/img/v2/dual-strike-1024.webp 1024w, assets/img/v2/dual-strike-full.webp 1680w" sizes="(max-width: 880px) 92vw, 640px" />
+          <img class="vision__art" src="assets/img/v2/dual-strike-1024.jpg" srcset="assets/img/v2/dual-strike-640.jpg 640w, assets/img/v2/dual-strike-1024.jpg 1024w, assets/img/v2/dual-strike-full.jpg 1680w" sizes="(max-width: 880px) 92vw, 640px" width="1680" height="944" alt="A player using both Dual Strike shells at a desk in front of a gaming monitor." loading="lazy" decoding="async" />
+        </picture>
+      </div>
       <div class="vision__copy reveal">
         <div class="kicker">The vision</div>
         <h2>Built for the players who want both.</h2>
-        <p>Dual Strike is for the controller player who envies a streamer's flick shot, and the mouse player who has always wished they could lean back. It's for everyone in between. We're finalising the prototype now and preparing for crowdfunding — early supporters will help shape the first production run.</p>
+        <p>Dual Strike is for the controller player who envies a streamer's flick shot, and the mouse player who has always wished they could lean back. It's for everyone in between.</p>
+        <p>The prototype is almost complete and we're preparing for crowdfunding. Catch the first live reveal on Twitch and Facebook, and help shape the first production run.</p>
       </div>
     </div>
   </section>
@@ -264,8 +365,8 @@
       <div class="reveal">
         <div class="kicker">Get in touch</div>
         <h2>Want to know more?</h2>
-        <p class="lede">We're a small team finalising the Dual Strike prototype ahead of a crowdfunding campaign. If you're a player, retailer, investor, journalist or potential partner — we'd love to hear from you.</p>
-        <a class="btn btn--primary btn--lg" href="mailto:enquiries@aimaura.co.uk?subject=Dual%20Strike%20enquiry">enquiries@aimaura.co.uk</a>
+        <p class="lede">We're a small team finishing the Dual Strike prototype ahead of our live reveal and crowdfunding campaign. If you're a player, streamer, retailer, investor, journalist or potential partner, we'd love to hear from you.</p>
+        <a class="btn btn--primary btn--lg" href="mailto:enquiries@aimaura.com?subject=Dual%20Strike%20enquiry">enquiries@aimaura.com</a>
         <p class="contact__note">We respond to every message personally.</p>
       </div>
     </div>
@@ -276,19 +377,19 @@
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
-      <img src="assets/img/logo-mark.png" alt="" />
+      <img src="assets/img/logo-mark.png" alt="" loading="lazy" />
       <div>
         <strong>AIMAURA</strong>
         <span>The Dual Ergonomic Gaming Mouse-Controller</span>
       </div>
     </div>
     <div class="footer__meta">
-      <span>© <span id="year"></span> Aimaura. All rights reserved.</span>
-      <a href="mailto:enquiries@aimaura.co.uk">enquiries@aimaura.co.uk</a>
+      <span>© <span id="year">2026</span> Aimaura. All rights reserved.</span>
+      <a href="mailto:enquiries@aimaura.com">enquiries@aimaura.com</a>
     </div>
   </div>
 </footer>
 
-<script src="script.js" defer></script>
+<script src="script.js?v=20261025" defer></script>
 </body>
 </html>
